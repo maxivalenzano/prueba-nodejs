@@ -1,6 +1,5 @@
-const http = require('http');
-
-const hostname = 'http://prueba-github-ingsw.herokuapp.com/';
+const express = require('express')
+const app = express()
 const port = process.env.PORT || 3000;
 
 
@@ -16,13 +15,10 @@ var result = `Multiplicacion ${a} + ${b} = ${calculator.multiply(a,b)}`
 console.log(`Multiplicacion ${a} + ${b} = ${calculator.multiply(a,b)}`);
 //console.log(`Division ${a} + ${b} = ${calculator.divide(a,b)}`);
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end(result);
-});
-
-
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+app.get('/', (req, res) => {
+    res.send(result)
+  })
+  
+  app.listen(port, () => {
+    console.log(`Example app listening at http://prueba-github-ingsw.herokuapp.com:${port}`)
+  })
