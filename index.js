@@ -1,7 +1,7 @@
 const http = require('http');
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const hostname = 'http://prueba-github-ingsw.herokuapp.com/';
+const port = process.env.PORT || 3000;
 
 
 var calculator = require('./app/calculator');
@@ -21,6 +21,7 @@ const server = http.createServer((req, res) => {
   res.setHeader('Content-Type', 'text/plain');
   res.end(result);
 });
+
 
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
